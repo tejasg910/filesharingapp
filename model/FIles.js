@@ -1,9 +1,14 @@
 import mongoose from "mongoose";
-
 const fileSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  email: { type: String, required: true },
-  password: { type: String, required: true },
+  filedetails: {},
+  owner: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+  },
+  to: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+  },
 });
 
-export const File = mongoose.model("User", fileSchema);
+export const Files = mongoose.model("Files", fileSchema);

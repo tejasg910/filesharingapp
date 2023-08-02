@@ -1,15 +1,13 @@
 import multer from "multer";
-
-//configuring file storage and naming
+// configuring storage for multer to use
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "photos/");
+    cb(null, "files/");
   },
   filename: (req, file, cb) => {
-    cb(null, file.originalname);
+    cb(null, req.user.email + file.originalname);
   },
 });
 
-//returing a middleware
-
-export const upload = multer({ dest: "photos/" });
+// creating middleware for routes
+export const upload = multer({ storage: storage });
