@@ -69,7 +69,7 @@ export const login = (req, res) => {
               id: user._id,
               email: user.email,
             },
-            "5678ABC",
+            process.env.JWT_SECRET,
             { expiresIn: "1h" }
           );
 
